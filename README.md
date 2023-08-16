@@ -13,3 +13,27 @@
 ### 순서도
 
 ![Lotto](https://github.com/minsik321/Java-Workspace/assets/141251335/93ca69bc-8a69-44e4-b5ad-655c7841fac2)
+
+<br><br>
+
+---
+
+## Step 2:  내 번호와 맞추어보기!
+
+- Step1의 순서도를 바탕으로 `로또 당첨 번호`를 생성하는 함수를 생성합니다.
+- 내가 `찍은 번호` 배열을 `myLottoNumbers` 변수에 할당합니다.
+- `찍은 번호`와 `로또 당첨 번호` 의 겹치는 숫자를 확인하는 함수를 생성합니다.
+
+<br>
+
+---
+
+### 출력시 화면
+
+예시 1)
+
+<img width="350" alt="스크린샷 2023-08-16 오후 7 31 23" src="https://github.com/minsik321/Java-Workspace/assets/141251335/5ee3608e-b042-45da-9761-3639070dc81d">
+
+예시 2)
+
+<img width="350" alt="스크린샷 2023-08-16 오후 7 32 03" src="https://github.com/minsik321/Java-Workspace/assets/141251335/1944c56b-f880-4ee5-8885-fd8993616a98">
