@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.StringJoiner;
 
 public class Lotto {
     public static void main(String[] args) {
@@ -10,5 +11,12 @@ public class Lotto {
             winningLottoNumbers.add(randomNumber);
         }
         return winningLottoNumbers;
+    }
+    static StringJoiner changeType(HashSet<Integer> winningLottoNumbers) {
+        StringJoiner stringJoinerTypeWinningLottoNumbers = new StringJoiner(" ,");
+        for (Integer ordinalNumber : winningLottoNumbers) {
+            stringJoinerTypeWinningLottoNumbers.add(String.valueOf(ordinalNumber));
+        }
+        return stringJoinerTypeWinningLottoNumbers;
     }
 }
