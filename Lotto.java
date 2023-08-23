@@ -1,11 +1,10 @@
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class Lotto {
     public static void main(String[] args) {
         HashMap<String, StringJoiner> roundOfWinningLottoNumbers = new HashMap<>();
+        numberOfSaveWinningLottoNumbers(5,roundOfWinningLottoNumbers);
+        printOrderInformation("2회차", roundOfWinningLottoNumbers);
     }
     static HashSet<Integer> getWinningLottoNumbers() {
         HashSet<Integer> winningLottoNumbers = new HashSet<>();
@@ -35,5 +34,9 @@ public class Lotto {
         for (int ordinalNumber = 0; ordinalNumber < number; ordinalNumber++) {
             saveWinningLottoNumbers(roundOfWinningLottoNumbers);
         }
+    }
+    static void printOrderInformation(String roundOfLotto, HashMap<String , StringJoiner> map ) {
+        Optional.ofNullable(map.get(roundOfLotto))
+                .ifPresent((winningLottoNumbers) -> System.out.println(roundOfLotto + "의 로또 당첨 번호는 " + winningLottoNumbers + " 입니다."));
     }
 }
