@@ -3,8 +3,8 @@ import java.util.*;
 public class Lotto {
     public static void main(String[] args) {
         HashMap<String, StringJoiner> roundOfWinningLottoNumbers = new HashMap<>();
-        numberOfSaveWinningLottoNumbers(5,roundOfWinningLottoNumbers);
-        printOrderInformation("2회차", roundOfWinningLottoNumbers);
+        saveWinningLottoNumbers(5,roundOfWinningLottoNumbers);
+        printOrderInformation(roundOfWinningLottoNumbers);
     }
     static HashSet<Integer> getWinningLottoNumbers() {
         HashSet<Integer> winningLottoNumbers = new HashSet<>();
@@ -21,22 +21,26 @@ public class Lotto {
         }
         return stringJoinerTypeWinningLottoNumbers;
     }
-    static void saveWinningLottoNumbers(HashMap<String ,StringJoiner> roundOfWinningLottoNumbers) {
-        String MaxRoundOfNumber;
-        if (roundOfWinningLottoNumbers.keySet().isEmpty()) {
-            MaxRoundOfNumber = "0회차";
-        } else {
-            MaxRoundOfNumber = Collections.max(roundOfWinningLottoNumbers.keySet());
-        }
-        roundOfWinningLottoNumbers.put(Integer.parseInt(MaxRoundOfNumber.substring(0,1))+1 + "회차",changeType(getWinningLottoNumbers()));
-    }
-    static void numberOfSaveWinningLottoNumbers(int number, HashMap<String ,StringJoiner> roundOfWinningLottoNumbers) {
+    static void saveWinningLottoNumbers(int number ,HashMap<String ,StringJoiner> roundOfWinningLottoNumbers) {
         for (int ordinalNumber = 0; ordinalNumber < number; ordinalNumber++) {
-            saveWinningLottoNumbers(roundOfWinningLottoNumbers);
+            String MaxRoundOfNumber;
+            if (roundOfWinningLottoNumbers.keySet().isEmpty()) {
+                MaxRoundOfNumber = "0회차";
+            } else {
+                MaxRoundOfNumber = Collections.max(roundOfWinningLottoNumbers.keySet());
+            }
+            roundOfWinningLottoNumbers.put(Integer.parseInt(MaxRoundOfNumber.substring(0, 1)) + 1 + "회차", changeType(getWinningLottoNumbers()));
         }
     }
-    static void printOrderInformation(String roundOfLotto, HashMap<String , StringJoiner> map ) {
-        Optional.ofNullable(map.get(roundOfLotto))
-                .ifPresent((winningLottoNumbers) -> System.out.println(roundOfLotto + "의 로또 당첨 번호는 " + winningLottoNumbers + " 입니다."));
+    static void printOrderInformation(HashMap<String , StringJoiner> roundOfWinningLottoNumbers ) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("지정 하신 회차에 따른 로또 당첨 번호를 출력 합니다.");
+        String answer = input.next();
+        if (!roundOfWinningLottoNumbers.containsKey(answer)) {
+            System.out.println("지정 하신 회차에 대한 로또 당첨 번호는 없습니다.");
+        } else {
+            Optional.ofNullable(roundOfWinningLottoNumbers.get(answer))
+                    .ifPresent((winningLottoNumbers) -> System.out.println(answer + "의 로또 당첨 번호는 " + winningLottoNumbers + " 입니다."));
+        }
     }
 }
